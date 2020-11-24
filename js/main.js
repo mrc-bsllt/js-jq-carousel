@@ -3,22 +3,32 @@ $(document).ready(
 
     var prevAngle = $(".prev");
     var nextAngle = $(".next");
+    var circle = $(".fa-circle");
 
-    // freccetta sinistra cliccabile
+    // cosa succede se clicco la freccetta sinistra con il mouse
     prevAngle.click(
       function() {
         prevImage();
       }
     );
 
-    // freccetta destra cliccabile
+    // cosa succede se clicco la freccetta destra con il mouse
     nextAngle.click(
       function() {
         nextImage();
       }
     );
 
-    // freccette della tastiera
+    // cosa succede se clicco i pallini con il mouse
+    circle.click(
+      function() {
+        ifClickCircle();
+        $(this).addClass("active");
+
+      }
+    );
+
+    // cosa succede se clicco le freccette laterali della tastiera
     $(document).keydown(
       function() {
         if (event.which == 37) {
@@ -65,4 +75,9 @@ function prevImage () {
     circleWithActive.prev().addClass("active");
   }
 };
+
+function ifClickCircle () {
+  var circleWithActive = $("i.active");
+  circleWithActive.removeClass("active");
+}
 // FUNCTION -------------------------------------------
