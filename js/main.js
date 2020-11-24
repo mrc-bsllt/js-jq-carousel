@@ -4,28 +4,37 @@ $(document).ready(
     var prevAngle = $(".prev");
     var nextAngle = $(".next");
 
+    // freccetta sinistra cliccabile
     prevAngle.click(
       function() {
-
         prevImage();
-
       }
     );
 
+    // freccetta destra cliccabile
     nextAngle.click(
       function() {
-
         nextImage();
+      }
+    );
 
+    // freccette della tastiera
+    $(document).keydown(
+      function() {
+        if (event.which == 37) {
+          prevImage();
+        } else if (event.which == 39) {
+          nextImage();
+        }
       }
     );
 
   }
 );
 
+
 // FUNCTION -------------------------------------------
 function nextImage () {
-
   var imageWithActive = $("img.active");
   var circleWithActive = $("i.active");
 
@@ -39,11 +48,9 @@ function nextImage () {
     imageWithActive.next().addClass("active");
     circleWithActive.next().addClass("active");
   }
-
-}
+};
 
 function prevImage () {
-
   var imageWithActive = $("img.active");
   var circleWithActive = $("i.active");
 
@@ -57,6 +64,5 @@ function prevImage () {
     imageWithActive.prev().addClass("active");
     circleWithActive.prev().addClass("active");
   }
-
-}
+};
 // FUNCTION -------------------------------------------
