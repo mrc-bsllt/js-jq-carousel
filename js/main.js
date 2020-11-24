@@ -3,7 +3,8 @@ $(document).ready(
 
     var prevAngle = $(".prev");
     var nextAngle = $(".next");
-    var circle = $(".fa-circle");
+    var circles = $(".fa-circle");
+    var images = $(".images img");
 
     // cosa succede se clicco la freccetta sinistra con il mouse
     prevAngle.click(
@@ -20,11 +21,12 @@ $(document).ready(
     );
 
     // cosa succede se clicco i pallini con il mouse
-    circle.click(
+    circles.click(
       function() {
         ifClickCircle();
+        var circleIndex = $(this).index();
         $(this).addClass("active");
-
+        $(images[circleIndex]).addClass("active");
       }
     );
 
@@ -45,9 +47,9 @@ $(document).ready(
 
 // FUNCTION -------------------------------------------
 function nextImage () {
+
   var imageWithActive = $("img.active");
   var circleWithActive = $("i.active");
-
   imageWithActive.removeClass("active");
   circleWithActive.removeClass("active");
 
@@ -58,15 +60,15 @@ function nextImage () {
     imageWithActive.next().addClass("active");
     circleWithActive.next().addClass("active");
   }
+
 };
 
 function prevImage () {
+
   var imageWithActive = $("img.active");
   var circleWithActive = $("i.active");
-
   imageWithActive.removeClass("active");
   circleWithActive.removeClass("active");
-
   if (imageWithActive.hasClass("first")) {
     $(".images img:last-child").addClass("active");
     $(".nav i:last-child").addClass("active");
@@ -74,10 +76,14 @@ function prevImage () {
     imageWithActive.prev().addClass("active");
     circleWithActive.prev().addClass("active");
   }
+
 };
 
 function ifClickCircle () {
+  var imageWithActive = $("img.active");
   var circleWithActive = $("i.active");
   circleWithActive.removeClass("active");
+  imageWithActive.removeClass("active");
+
 }
 // FUNCTION -------------------------------------------
